@@ -117,15 +117,17 @@ $(allSlides[indexVal]).fadeIn().animateCss(Effects[Math.floor(Math.random() * Ef
     
 }
     
-if(autoSlide === true){
-    $(".sliderWrap").on('mouseover', () => {
-clearInterval(nextSlides);
+if(autoSlide === true){ 
+    setInterval(nextSlides, 4000); 
+} 
+    
+$(".sliderWrap").mouseover(() => {
+    autoSlide = false;
 });
   
-$(".sliderWrap").on('mouseout', () => {
- setInterval(nextSlides, 4000);  
+$(".sliderWrap").mouseout(() => {
+    autoSlide = true;
 });
-} 
    
    
 });
