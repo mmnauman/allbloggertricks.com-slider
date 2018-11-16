@@ -10,13 +10,12 @@ let autoSlide = true;
 // Declaring Navigation Buttons
     const prevBtn = $("#prev");
     const nextBtn = $("#next");
-
 // getting the next and last images for the next and prev
     
 // Creating Array and getting all the image Urls
 var slidesContainer = [];
 var allSlides = [];
-const Effects = ["bounceInRight", "flipInX", "lightSpeedIn", "jackInTheBox", "zoomInRight", "zoomInDown", "rotateInDownRight", "fadeInRight", "rubberBand"];
+const Effects = ["bounceInRight", "flipInX", "lightSpeedIn", "jackInTheBox", "rollIn", "zoomInDown", "rotateInDownLeft", "fadeInRightBig"];
 // declaring logical variables
 var indexVal = 0
 var j = 0;
@@ -29,14 +28,11 @@ for(let i = 0; i < slide.length; i++){
     slidesContainer.push(slide[i].firstElementChild.getAttribute("src")); 
     allSlides.push(slide[i]);
 }
-
 // Adding Default Background To the Navigation buttons
 prevBtn.css("background", 'url(' + $(".slide").init().eq($(".slide").length - 1).find("img")[0].src+ ')'); 
 nextBtn.css("background", 'url(' + $(".slide").init().eq(1).find("img")[0].src+ ')');
-
 // Only showing the first slide
 $(".slide").init().eq(0).show();
-
 // Creating Event Listener and adding click event on the navigation buttons
 prevBtn.on("click", prevSlides);
 nextBtn.on("click", nextSlides);
@@ -48,7 +44,6 @@ function prevSlides(){
      if (indexVal === 0) {
            j = slidesContainer.length;
         indexVal = slidesContainer.length; 
-
         $(".slide").init().eq(0).hide();
         $(".slide").init().eq(slidesContainer.length-1).show();
     }
@@ -73,7 +68,6 @@ function prevSlides(){
 $(allSlides[indexVal]).fadeIn().animateCss(Effects[Math.floor(Math.random() * Effects.length)], function() {
  $(this).removeClass("animated slideInLeft");
 });
-
         j = indexVal - 1;    
         prevBtn.css("background", 'url(' + $(".slide").init().eq(j).find("img")[0].src+ ')');
     
@@ -121,15 +115,18 @@ $(allSlides[indexVal]).fadeIn().animateCss(Effects[Math.floor(Math.random() * Ef
         nextBtn.css("background", 'url(' + $(".slide").init().eq(k).find("img")[0].src+ ')');
     }
     
-
 }
     
 if(autoSlide === true){
-    setInterval(nextSlides, 5000);   
+    setInterval(nextSlides, 3000);   
 } 
-        
-      
-        
-        
-});
     
+$(".sliderWrap").on('mouseover', () => {
+clearInterval(nextSlides);
+});
+  
+$(".sliderWrap").on('mouseout', () => {
+ setInterval(nextSlides, 4000);  
+});
+   
+});
