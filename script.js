@@ -121,11 +121,11 @@ if(autoSlide === true){
     setInterval(nextSlides, 4000); 
 } 
     
-$(".sliderWrap").mouseover(() => {
+$(".slide").mouseover(function(){
     autoSlide = false;
 });
   
-$(".sliderWrap").mouseout(() => {
+$(".slide").mouseout(function(){
     autoSlide = true;
 });
    
