@@ -121,7 +121,7 @@ if(autoSlide === true){
     setInterval(nextSlides, 4000); 
 } 
     
-$(".slide").mouseover(function(){
+$(".slide").mouseenter(function(){
     autoSlide = false;
 });
    
