@@ -124,10 +124,6 @@ if(autoSlide === true){
 $(".slide").mouseover(function(){
     autoSlide = false;
 });
-  
-$(".slide").mouseout(function(){
-    autoSlide = true;
-});
    
    
 });
